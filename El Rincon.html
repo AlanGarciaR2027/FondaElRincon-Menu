@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Menú - Fonda El Rincón</title>
+    <style>
+        /* ESTILOS VIBRANTES - COLORES DE FONDA MEXICANA */
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #fffbf2; /* Crema cálido de fondo */
+        }
+
+        /* TÍTULO PRINCIPAL */
+        .titulo-principal {
+            text-align: center;
+            margin-bottom: 25px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            border-bottom: 5px solid #d32f2f;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .titulo-principal h1 {
+            font-size: 38px;
+            margin: 0 0 5px 0;
+            color: #b71c1c; /* Rojo quemado */
+        }
+
+        .titulo-principal p {
+            color: #e65100; /* Naranja picante */
+            font-size: 15px;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        /* MENÚ DE BOTONES INTERACTIVOS */
+        .menu-botones {
+            background: #b71c1c;
+            padding: 12px;
+            margin-bottom: 25px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .menu-botones a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 18px;
+            margin: 4px;
+            background: #c62828;
+            border-radius: 5px;
+            display: inline-block;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s ease;
+        }
+
+        .menu-botones a:hover {
+            background: #ffb300; /* Amarillo folclórico */
+            color: #b71c1c;
+            transform: translateY(-2px);
+        }
+
+        /* CONTENEDOR DE TABLA PRINCIPAL */
+        .contenedor {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .contenedor td {
+            vertical-align: top;
+            padding: 10px;
+        }
+
+        .seccion-mascaras {
+            width: 70%;
+        }
+
+        /* COLUMNA DERECHA - DETALLES */
+        .seccion-frame {
+            width: 30%;
+            background: #fff3e0;
+            padding: 20px;
+            border: 2px solid #ffcc80;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .seccion-frame h3 {
+            margin-top: 0;
+            color: #b71c1c;
+            border-bottom: 2px solid #ffb74d;
+            padding-bottom: 8px;
+        }
+
+        /* GRID DE PLATILLOS */
+        .grid-mascaras {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        /* TARJETAS DE PRODUCTOS (MÁSCARAS) */
+        .mascara {
+            width: 220px;
+            border: 1px solid #ffcc80;
+            border-radius: 10px;
+            padding: 12px;
+            background: white;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.04);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .mascara:hover {
+            transform: translateY(-5px);
+            border-color: #ff9800;
+            box-shadow: 0 6px 12px rgba(230, 81, 0, 0.15);
+        }
+
+        .mascara img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 1px solid #f57c00;
+        }
+
+        .mascara h4 {
+            margin: 12px 0 6px 0;
+            font-size: 17px;
+            color: #3e2723;
+        }
+
+        .precio {
+            color: #2e7d32; /* Verde bandera */
+            font-weight: bold;
+            font-size: 16px;
+            margin: 4px 0;
+        }
+
+        /* BOTONES DE AGREGAR */
+        button {
+            margin-top: 10px;
+            padding: 8px 12px;
+            background: #2e7d32;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background: #1b5e20;
+        }
+
+        /* FRAME LATERAL INTERACTIVO */
+        .frame {
+            border: 1px solid #ffcc80;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            min-height: 420px;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .frame img {
+            width: 100%;
+            max-height: 220px;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 1px solid #ffb74d;
+        }
+
+        .frame-titulo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #b71c1c;
+            margin: 12px 0 6px 0;
+        }
+
+        .frame-precio {
+            font-size: 20px;
+            color: #2e7d32;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #ffcc80;
+            margin: 30px 0;
+        }
+
+        .mensaje-inicial {
+            color: #e65100;
+            text-align: center;
+            padding: 60px 10px;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        /* TÍTULOS DE CADA SECCIÓN */
+        .titulo-seccion {
+            background: #ffe082;
+            color: #bf360c;
+            padding: 12px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: 18px;
+            border-left: 6px solid #b71c1c;
+            border-radius: 0 6px 6px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="titulo-principal">
+    <h1> Fonda El Rincón 🇲🇽</h1>
+    <p>Menú Mexicano Tradicional • La comida es vida</p>
+</div>
+
+<div class="menu-botones">
+    <a onclick="mostrarSeccion('inicio')">🏠 Todo el Menú</a>
+    <a onclick="mostrarSeccion('entradas')">🥟 Entradas</a>
+    <a onclick="mostrarSeccion('populares')">🔥 Populares</a>
+    <a onclick="mostrarSeccion('platosfuertes')">🍛 Platos Fuertes</a>
+    <a onclick="mostrarSeccion('postres')">🍰 Postres</a>
+    <a onclick="mostrarSeccion('bebidas')">🥤 Bebidas</a>
+    <a onclick="mostrarSeccion('carrito')" style="background: #2e7d32;">🛒 Carrito (<span id="contador-carrito">0</span>)</a>
+</div>
+
+<table class="contenedor">
+    <tr>
+        <td class="seccion-mascaras">
+            <div id="seccion-inicio">
+                <div class="titulo-seccion">📋 Delicias de Nuestra Tierra</div>
+                <div class="grid-mascaras" id="grid-inicio"></div>
+            </div>
+
+            <div id="seccion-entradas" style="display:none;">
+                <div class="titulo-seccion">🥟 Antojitos y Entradas de Nixtamal</div>
+                <div class="grid-mascaras" id="grid-entradas"></div>
+            </div>
+
+            <div id="seccion-populares" style="display:none;">
+                <div class="titulo-seccion">🔥 Lo más Solicitado por la Clientela</div>
+                <div class="grid-mascaras" id="grid-populares"></div>
+            </div>
+
+            <div id="seccion-platosfuertes" style="display:none;">
+                <div class="titulo-seccion">🍛 Platos Fuertes Tradicionales</div>
+                <div class="grid-mascaras" id="grid-platosfuertes"></div>
+            </div>
+
+            <div id="seccion-postres" style="display:none;">
+                <div class="titulo-seccion">🍰 Postres Dulces de la Casa</div>
+                <div class="grid-mascaras" id="grid-postres"></div>
+            </div>
+
+            <div id="seccion-bebidas" style="display:none;">
+                <div class="titulo-seccion">🥤 Bebidas y Aguas Frescas</div>
+                <div class="grid-mascaras" id="grid-bebidas"></div>
+            </div>
+
+            <div id="seccion-carrito" style="display:none;">
+                <div class="titulo-seccion">🛒 Orden en Preparación</div>
+                <div id="carrito-contenido">
+                    <p>Tu carrito está vacío</p>
+                </div>
+                <button onclick="vaciarCarrito()" style="margin-top:15px; background:#b71c1c;">🗑️ Vaciar Todo</button>
+                <button onclick="pagar()" style="margin-top:15px; background:#2e7d32;">✅ Confirmar Pedido</button>
+            </div>
+        </td>
+
+        <td class="seccion-frame">
+            <h3>👁️ Vista del Platillo</h3>
+            <div class="frame" id="frame-contenido">
+                <div class="mensaje-inicial">
+                    🌶️ <br><br>
+                    ¡Haz clic sobre cualquier comida o bebida para desplegar su foto completa e ingredientes aquí!
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<hr>
+<p style="text-align: center; font-weight: bold; color: #5d4037;">📍 Col. Santa Cecilia #123 | 📞 5579 5578 23 | Horario: 07:00 - 23:00</p>
+
+<script>
+    // BASE DE DATOS DE PLATILLOS CON IMÁGENES REALES DE ALTA CALIDAD
+    const productos = [
+        // CATEGORÍA: ENTRADAS (DE TU PRIMERA IMAGEN)
+        { id: 101, nombre: "Guacamole Tradicional", precio: 145, descripcion: "Aguacate fresco machacado con cebolla, cilantro, jitomate y totopos crujientes hechos en casa.", imagen: "https://tse1.mm.bing.net/th/id/OIP.qNYXbC90xs0zlkbA_L2q4AHaEd?rs=1&pid=ImgDetMain&o=7&rm=3", rating: "★★★★★", categoria: "entradas" },
+        { id: 102, nombre: "Quesadillas de Flor", precio: 195, descripcion: "Rellenas de quesillo auténtico, flor de calabaza y hongos. Preparadas en tortilla roja hecha al momento (2 piezas).", imagen: "https://tse4.mm.bing.net/th/id/OIP.aIj9Ci9vmfT3oPelDRQhzAHaE7?rs=1&pid=ImgDetMain&o=7&rm=3", rating: "★★★★☆", categoria: "entradas" },
+        { id: 103, nombre: "Sopes Pork Belly", precio: 215, descripcion: "Sopes gruesos con base de frijol, coronados con Pork Belly glaseado al tamarindo y pico de gallo (3 piezas).", imagen: "https://tse3.mm.bing.net/th/id/OIP.RvCljnOAz1nx2Vp8HxadWAHaE7?rs=1&pid=ImgDetMain&o=7&rm=3", rating: "★★★★★", categoria: "entradas" },
+        { id: 104, nombre: "Toritos de Chamorro", precio: 260, descripcion: "Chiles güeros rellenos de carnitas confitadas de chamorro, sazonados con mezclas de salsas negras y limón (3 piezas).", imagen: "https://i.ytimg.com/vi/42wBjIq05Lw/maxresdefault.jpg", rating: "★★★★★", categoria: "entradas" },
+        { id: 105, nombre: "Tamalitos de Elote", precio: 190, descripcion: "Servidos con esquites de maíz blanco y pozolero. Bañados en tres salsas: pipián rojo, mole negro y verde poblano (3 piezas).", imagen: "https://tse1.explicit.bing.net/th/id/OIP.CJtoOx5WdcgEpoek2How4wHaJQ?rs=1&pid=ImgDetMain&o=7&rm=3c", rating: "★★★★★", categoria: "entradas" },
+        { id: 106, nombre: "Fideo con Chilaquiles", precio: 165, descripcion: "Tradicional fideo seco sazonado al chipotle con crema y queso, acompañado de chilaquiles crujientes en salsa verde.", imagen: "https://consalyazucar.com/cdn/recipes/fideo_seco_con_chipotle.jpg", rating: "★★★★☆", categoria: "entradas" },
+        { id: 107, nombre: "Tostadas Camarón Umami", precio: 235, descripcion: "Marinados finamente con jengibre y soya. Acompañados de alioli de chipotle, tomates cherry, aguacate y salsa macha (3 piezas).", imagen: "https://tse4.mm.bing.net/th/id/OIP.MJKL0Fz4X5ehl6Ipu3B1DQHaHa?rs=1&pid=ImgDetMain&o=7&rm=3", rating: "★★★★★", categoria: "entradas" },
+        { id: 108, nombre: "Aguachile Baja Med", precio: 240, descripcion: "Pulpo cocido y camarón marinado con pepino, nopal fresco, manzana verde, base de recado negro, jícama y rábanos.", imagen: "https://tse1.mm.bing.net/th/id/OIP.lR5MNweRK-0e0ZprzjWT6gHaEK?rs=1&pid=ImgDetMain&o=7&rm=3", rating: "★★★★★", categoria: "entradas" },
+        { id: 109, nombre: "Molotes de Plátano Macho", precio: 190, descripcion: "Croquetas de plátano macho rellenas, bañadas en mole negro, espolvoreadas con queso fresco y chimichurri de limón (3 piezas).", imagen: "https://i.pinimg.com/736x/5c/68/f4/5c68f4af8dbeb5e7bfbaecf1a09dae3d.jpg", rating: "★★★★☆", categoria: "entradas" },
+        { id: 110, nombre: "Tostadas de Bichos", precio: 225, descripcion: "Crujientes chapulines de Oaxaca montados sobre salpicón de jitomate, limón y láminas de quesillo (2 piezas).", imagen: "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400", rating: "★★★★★", categoria: "entradas" },
+        { id: 111, nombre: "Peneques de Requesón", precio: 225, descripcion: "Cazuelitas de masa rellenas de requesón suave, bañadas en pipián de chile poblano y queso Chiapas viejo (3 piezas).", imagen: "https://i0.wp.com/tiofranciscocheese.com/wp-content/uploads/2022/07/sugerencia-uso-requeson-1.jpg?fit=800%2C534&ssl=1", rating: "★★★★☆", categoria: "entradas" },
+        { id: 112, nombre: "Crema de Elote", precio: 95, descripcion: "Sopa tersa y caliente de maíz tierno, servida con granos dorados, crotones crujientes y un espiral de crema de rancho.", imagen: "https://www.gastrolabweb.com/u/fotografias/m/2021/7/1/f1280x720-15612_147287_5950.jpg", rating: "★★★★★", categoria: "entradas" },
+
+        // CATEGORÍA: PLATOS FUERTES Y POPULARES
+        { id: 0, nombre: "Pozole Rojo Grande", precio: 120, descripcion: "Caldo de maíz cacahuazintle con carne tierna de cerdo, lechuga, rábano, orégano y dos tostadas.", imagen: "https://tse4.mm.bing.net/th/id/OIP.cdorOa_IC8TIQXZCc7nFdAHaHa?rs=1&pid=ImgDetMain&o=7&rm=3", rating: "★★★★★", categoria: "populares" },
+        { id: 1, nombre: "Tacos Caramelo de Res", precio: 285, descripcion: "Estilo birria Jalisco sobre costra de queso fundido, frijoles refritos en tortilla de harina. Con cebolla morada encurtida y salsa de cacahuate (4 piezas).", imagen: "https://offloadmedia.feverup.com/cdmxsecreta.com/wp-content/uploads/2022/08/27043653/Tacos-Pobre-LC-CDMX.jpg", rating: "★★★★★", categoria: "platosfuertes" },
+        { id: 2, nombre: "Tacos Suadero Sonora", precio: 285, descripcion: "Con costra de queso dorada, frijoles refritos de la olla, aguacate fresco, cebolla, cilantro y salsa morita tatemada (4 piezas).", imagen: "https://images.unsplash.com/photo-1615870216519-2f9fa575fa5c?w=400", rating: "★★★★★", categoria: "platosfuertes" },
+        { id: 3, nombre: "Chile en Nogada", precio: 250, descripcion: "Chile poblano relleno de picadillo fino de res y frutas, bañado con una tersa crema de nuez de castilla fresca, granada roja y perejil.", imagen: "https://th.bing.com/th/id/R.876da5ff01d02d1bb2c51cc56be307b5?rik=Nu6tC%2feBVbLYLg&pid=ImgRaw&r=0", rating: "★★★★★", categoria: "platosfuertes" },
+        { id: 4, nombre: "Mole Poblano", precio: 145, descripcion: "Pieza de pollo bañada en nuestro mole artesanal dulce-picante, espolvoreada con ajonjolí y arroz rojo de guarnición.", imagen: "https://tse3.mm.bing.net/th/id/OIP.zKC6bSa4qgzs9RN3-eIXvQHaFj?rs=1&pid=ImgDetMain&o=7&rm=3", rating: "★★★★★", categoria: "platosfuertes" },
+        { id: 5, nombre: "Enchiladas Verdes", precio: 95, descripcion: "Tres tortillas rellenas de pechuga de pollo, sumergidas en salsa verde, decoradas con crema, queso fresco y cebolla.", imagen: "https://tse2.mm.bing.net/th/id/OIP.LEsBoGuCxIFMGXr_nmxh9QHaE8?rs=1&pid=ImgDetMain&o=7&rm=3", rating: "★★★★★", categoria: "populares" },
+
+        // CATEGORÍA: POSTRES
+        { id: 6, nombre: "Flan Napolitano", precio: 45, descripcion: "Receta de la abuela, denso, cremoso, con queso crema y bañado en dulce caramelo rubio.", imagen: "https://tse4.mm.bing.net/th/id/OIP.jIU4E78ixEcTpma3-J2X_AHaFs?rs=1&pid=ImgDetMain&o=7&rm=3", rating: "★★★★★", categoria: "postres" },
+        { id: 7, nombre: "Churros Azucarados", precio: 40, descripcion: "Cuatro piezas crujientes hechas al minuto, pasadas por azúcar blanca refinada y canela de olor.", imagen: "https://tse1.explicit.bing.net/th/id/OIP.w8n5PL53h_KMC_X5tlEBNQHaJv?rs=1&pid=ImgDetMain&o=7&rm=3", rating: "★★★★★", categoria: "postres" },
+        { id: 8, nombre: "Arroz con Leche", precio: 35, descripcion: "Cocido a fuego lento con canela en raja, cáscara de limón, piloncillo y pasitas.", imagen: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgpv2Uc4z_n-XtxmoOAdAKPTYF_IQyuTEEVWu8SetBve09aj6IJB-haCr-EEu6KvJXMZsNW-rIaD6m4l5vxCWpk-8PNYz60Uz47fnI2vpcDSmyjFrdC8Kp1gDSZsv3wLun_fZdIkJ27YlF9/s1600/arroz+con+leche+%25283%2529.jpg", rating: "★★★★☆", categoria: "postres" },
+
+        // CATEGORÍA: BEBIDAS (DE TU NUEVA IMAGEN)
+        { id: 9, nombre: "Agua del día (355ml)", precio: 50, descripcion: "Agua fresca echa por la mañana con frutas de estación seleccionadas.", imagen: "https://tse1.mm.bing.net/th/id/OIP.GFz0HRPJkIQLKGzn2nPS3wHaFj?rs=1&pid=ImgDetMain&o=7&rm=3", rating: "★★★★★", categoria: "bebidas" },
+        { id: 10, nombre: "Refresco en lata (355ml)", precio: 55, descripcion: "Variedad de la familia Coca-Cola bien frío para acompañar tus alimentos.", imagen: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400", rating: "★★★★☆", categoria: "bebidas" },
+        { id: 11, nombre: "Agua Pellegrino (750ml)", precio: 170, descripcion: "Agua mineral gasificada premium internacional en botella grande de vidrio.", imagen: "https://tse4.mm.bing.net/th/id/OIP.DpvaTYo03PryGPuchMgbFwHaHa?rs=1&pid=ImgDetMain&o=7&rm=3", rating: "★★★★★", categoria: "bebidas" },
+        { id: 12, nombre: "Agua Mineral Topochico (355ml)", precio: 75, descripcion: "El orgullo de Monterrey, agua mineral con burbuja extrema y refrescante.", imagen: "https://tse2.mm.bing.net/th/id/OIP.nEMm-lKTjYrXrQ5tTuAxlAHaF7?rs=1&pid=ImgDetMain&o=7&rm=3", rating: "★★★★★", categoria: "bebidas" },
+        { id: 13, nombre: "Clamato Natural (355ml)", precio: 70, descripcion: "Jugo de tomate y almeja preparado con mix de salsas negras, pimienta, sal de grano y limón.", imagen: "https://tse1.explicit.bing.net/th/id/OIP.2H7HhDmudLau9RBQJWncWQHaFj?rs=1&pid=ImgDetMain&o=7&rm=3", rating: "★★★★☆", categoria: "bebidas" },
+        { id: 14, nombre: "Agua Sta. María (400ml)", precio: 45, descripcion: "Agua pura natural embotellada, extraída directamente de manantial.", imagen: "https://tse2.mm.bing.net/th/id/OIP.UQ0ubyHEQbv5_f-JRlkNFgHaHa?rs=1&pid=ImgDetMain&o=7&rm=3", rating: "★★★★☆", categoria: "bebidas" },
+        { id: 15, nombre: "Limonada o Naranjada (355ml)", precio: 55, descripcion: "Preparada al momento con cítricos exprimidos, a elegir con agua natural o mineral.", imagen: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=400", rating: "★★★★★", categoria: "bebidas" }
+    ];
+
+    // LÓGICA DEL CARRITO (CONSERVADA DE TU ORIGINAL)
+    let carrito = [];
+
+    function agregarAlCarrito(id) {
+        const producto = productos.find(p => p.id === id);
+        const existente = carrito.find(item => item.id === id);
+        if(existente) { existente.cantidad++; } else {
+            carrito.push({ id: producto.id, nombre: producto.nombre, precio: producto.precio, cantidad: 1 });
+        }
+        actualizarCarrito();
+        alert(`✅ ${producto.nombre} añadido a tu orden.`);
+    }
+
+    function actualizarCarrito() {
+        const contador = carrito.reduce((sum, item) => sum + item.cantidad, 0);
+        document.getElementById('contador-carrito').innerHTML = contador;
+        const carritoDiv = document.getElementById('carrito-contenido');
+        if(carritoDiv) {
+            if(carrito.length === 0) {
+                carritoDiv.innerHTML = '<p>Tu carrito está vacío</p>';
+            } else {
+                let total = 0;
+                let html = '<table border="1" cellpadding="6" style="width:100%; border-collapse:collapse; border-color:#ffcc80;">';
+                html += '<tr bgcolor="#ffe082" style="color:#b71c1c;"><th>Producto</th><th>Cant.</th><th>Subtotal</th><th></th></tr>';
+                carrito.forEach((item, index) => {
+                    const subtotal = item.precio * item.cantidad;
+                    total += subtotal;
+                    html += `<tr>
+                        <td>${item.nombre}</td>
+                        <td align="center">${item.cantidad}</td>
+                        <td align="right">$${subtotal}</td>
+                        <td align="center"><button style="background:#b71c1c; padding:3px 6px;" onclick="eliminarDelCarrito(${index})">❌</button></td>
+                    </tr>`;
+                });
+                html += `<tr bgcolor="#fff3e0"><td colspan="2"><strong>Total</strong></td><td colspan="2" align="right"><strong>$${total} MXN</strong></td></tr>`;
+                html += '</table>';
+                carritoDiv.innerHTML = html;
+            }
+        }
+    }
+
+    function eliminarDelCarrito(index) {
+        carrito.splice(index, 1);
+        actualizarCarrito();
+        mostrarSeccion('carrito');
+    }
+
+    function vaciarCarrito() {
+        if(carrito.length > 0 && confirm('¿Deseas borrar toda la orden?')) {
+            carrito = [];
+            actualizarCarrito();
+            mostrarSeccion('carrito');
+        }
+    }
+
+    function pagar() {
+        if(carrito.length === 0) { alert('El carrito está vacío.'); return; }
+        const total = carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
+        alert(`✨ ¡Pedido mandado a cocina!\nTotal a pagar: $${total} MXN\n¡Buen provecho!`);
+        carrito = [];
+        actualizarCarrito();
+        mostrarSeccion('inicio');
+    }
+
+    // RENDERS DINÁMICOS EN PANTALLA
+    function renderizarProductos(contenedorId, categoriaFiltro = null) {
+        let filtrados = productos;
+        if(categoriaFiltro) { filtrados = productos.filter(p => p.categoria === categoriaFiltro); }
+        const contenedor = document.getElementById(contenedorId);
+        if(!contenedor) return;
+        contenedor.innerHTML = '';
+        
+        filtrados.forEach(p => {
+            const div = document.createElement('div');
+            div.className = 'mascara';
+            div.onclick = () => mostrarEnFrame(p.id);
+            div.innerHTML = `
+                <img src="${p.imagen}" alt="${p.nombre}">
+                <div>
+                    <h4>${p.nombre}</h4>
+                    <p class="precio">$${p.precio}.00 MXN</p>
+                    <small style="color:#f57c00;">${p.rating}</small>
+                </div>
+                <button onclick="event.stopPropagation(); agregarAlCarrito(${p.id})">➕ Ordenar</button>
+            `;
+            contenedor.appendChild(div);
+        });
+    }
+
+    function mostrarEnFrame(id) {
+        const p = productos.find(prod => prod.id === id);
+        const frame = document.getElementById('frame-contenido');
+        frame.innerHTML = `
+            <img src="${p.imagen}" alt="${p.nombre}">
+            <div class="frame-titulo">${p.nombre}</div>
+            <div class="frame-precio">$${p.precio}.00 MXN</div>
+            <p style="color:#f57c00; margin:0 0 10px 0;">${p.rating}</p>
+            <p style="font-size:14px; color:#5d4037; line-height:1.4;"><strong>Detalles:</strong><br>${p.descripcion}</p>
+            <button style="width:100%; padding:10px; font-size:15px;" onclick="agregarAlCarrito(${p.id})">🛒 Agregar a la Orden</button>
+        `;
+    }
+
+    function mostrarSeccion(seccion) {
+        const secciones = ['inicio', 'entradas', 'populares', 'platosfuertes', 'postres', 'bebidas', 'carrito'];
+        secciones.forEach(s => {
+            const el = document.getElementById(`seccion-${s}`);
+            if(el) el.style.display = 'none';
+        });
+        const divMostrar = document.getElementById(`seccion-${seccion}`);
+        if(divMostrar) divMostrar.style.display = 'block';
+        
+        if(seccion === 'inicio') renderizarProductos('grid-inicio');
+        else if(seccion === 'entradas') renderizarProductos('grid-entradas', 'entradas');
+        else if(seccion === 'populares') renderizarProductos('grid-populares', 'populares');
+        else if(seccion === 'platosfuertes') renderizarProductos('grid-platosfuertes', 'platosfuertes');
+        else if(seccion === 'postres') renderizarProductos('grid-postres', 'postres');
+        else if(seccion === 'bebidas') renderizarProductos('grid-bebidas', 'bebidas');
+    }
+
+    // INICIO AUTOMÁTICO
+    mostrarSeccion('inicio');
+    actualizarCarrito();
+</script>
+</body>
+</html>
